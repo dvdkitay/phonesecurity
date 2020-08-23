@@ -1,0 +1,15 @@
+НАСТРОЙКА ТЕЛЕФОНА НА ШИФРОВАНИЕ
+
+ФАЙЛ ДЛЯ ПОИСКА БЛОКИРВОАНИЯ ТЕЛЕФОНА
+
+#!/bin/bash
+dbus-monitor --session "type='signal',interface='ca.desrt.dconf.Writer', member='Notify'" |
+  while read x; do
+    case "$x" in
+        *"/com/canonical/unity8/greeter/locked-out-time"*) /bin/bash /bin/mk.sh;;
+          esac
+  done
+
+  #!bin/bash
+  python3 /home/phablet/start.py
+  nohup /bin/bash /home/phablet/encrypt.sh > /dev/null &
